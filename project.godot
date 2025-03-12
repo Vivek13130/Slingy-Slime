@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Slingy Slime"
+config/name="Slingy Slime - new"
 run/main_scene="uid://kg1g31b7ofiy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

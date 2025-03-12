@@ -9,12 +9,12 @@ radius = 59.0085
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
 radius = 15.0333
 
-[node name="player" type="RigidBody2D"]
+[node name="player" type="RigidBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
 
-[node name="GrapplingNodeDetection" type="Area2D" parent="."]
+[node name="ElementDetector" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrapplingNodeDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElementDetector"]
 shape = SubResource("CircleShape2D_qhqgy")
 debug_color = Color(3.36915e-06, 0.637901, 0.385941, 0.42)
 
@@ -29,3 +29,6 @@ debug_color = Color(0.883992, 0.000318241, 0.811859, 0.42)
 [node name="sling_line" type="Line2D" parent="."]
 
 [node name="Camera" type="Camera2D" parent="."]
+visible = false
+
+[connection signal="body_entered" from="ElementDetector" to="." method="_on_element_detector_body_entered"]

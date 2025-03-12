@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var sling_force_multiplier: float = 1000.0
+@export var sling_force_multiplier: float = 1250.0
 @export var max_drag_distance: float = 100.0
 @export var aiming_line_width: float = 5.0
 
@@ -21,6 +21,7 @@ var max_sling_length : float = 200
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera
 @onready var sling_line: Line2D = $sling_line
+@onready var collision_shape: CollisionShape2D = $ElementDetector/CollisionShape2D
 
 
 func _ready():
@@ -30,11 +31,19 @@ func _ready():
 	sling_line.visible = false
 
 func _process(delta: float) -> void:
-	update_slime_visuals() # Setting various scale at x and y axis 
+	#update_slime_visuals() # Setting various scale at x and y axis 
 
 	# Show sling line when aiming
 	if is_aiming:
 		update_sling_line()
+
+
+func _physics_process(delta):
+	# Update the stuck state
+	if is_stuck and stuck_to:
+		# Make sure we stay attached to the surface we're stuck to
+		global_position = stuck_to.global_position + (global_position - stuck_to.global_position).normalized() * collision_shape.shape.radius
+
 
 
 func _input(event):
@@ -156,3 +165,73 @@ func update_slime_visuals() -> void :
 	else:
 		# Reset scale when stuck
 		sprite.scale = Vector2(1, 1)
+
+
+#func complete_level():
+	## This function will be called  by the level manager
+	#can_sling = false
+	#
+	## Celebratory animation
+	#animation_player.play("celebrate")
+
+
+func _on_element_detector_body_entered(body: Node2D) -> void:
+	# this will handle detecting various bodies interaction with player
+	
+	print(" a body entered now")
+	
+	if body.is_in_group("sticky") and not is_stuck:
+		stick_to(body)
+	elif body.is_in_group("non_sticky"):
+		# Bounce off non-sticky surfaces
+		#play_sound(bounce_sound)
+		pass
+	elif body.is_in_group("hazard"):
+		die()
+	elif body.is_in_group("collectible"):
+		collect(body)
+	elif body.is_in_group("goal"):
+		complete_level()
+
+
+func stick_to(body):
+	is_stuck = true
+	stuck_to = body
+	freeze = true
+	#play_sound(stick_sound)
+	
+	# Play stick animation
+	#animation_player.play("stick")
+
+func die():
+	# Disable physics and controls
+	can_sling = false
+	freeze = true
+	lock_rotation = true
+	
+	# Play death animation and sound
+	#animation_player.play("death")
+	#play_sound(death_sound)
+	
+	# Signal that player died
+	#emit_signal("player_died")
+	
+	# Reset after a short delay
+	await get_tree().create_timer(1.0).timeout
+	reset_player()
+
+
+func collect(collectible):
+	print("element collected , signal not connected")
+	# check commented code -----------------------
+	#if collectible.has_method("collect"):
+		#var orb_id = collectible.collect()
+		#emit_signal("orb_collected", orb_id)
+		#play_sound(collect_sound)
+
+func complete_level():
+	# This will be handled by the level manager
+	can_sling = false
+	
+	# Celebratory animation
+	#animation_player.play("celebrate")
