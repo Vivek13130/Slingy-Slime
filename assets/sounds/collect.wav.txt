@@ -1,0 +1,3 @@
+This is a placeholder for the collect sound effect.
+In a real implementation, this would be a WAV file with a cheerful "pling" sound when collecting goo orbs.
+The sound should be rewarding and distinct from other game sounds.

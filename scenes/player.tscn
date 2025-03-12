@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bccgco4cymtoj"]
+
+[ext_resource type="Script" uid="uid://cq1ckkjsg354j" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dtq6y6qr2xf4k" path="res://assets/images/slime.svg" id="2_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 59.0085
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
+radius = 15.0333
+
+[node name="player" type="RigidBody2D"]
+script = ExtResource("1_g2els")
+
+[node name="GrapplingNodeDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrapplingNodeDetection"]
+shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(3.36915e-06, 0.637901, 0.385941, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qlg0r")
+debug_color = Color(0.883992, 0.000318241, 0.811859, 0.42)
+
+[node name="sling_line" type="Line2D" parent="."]
+
+[node name="Camera" type="Camera2D" parent="."]

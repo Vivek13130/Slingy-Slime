@@ -1,0 +1,3 @@
+This is a placeholder for the death sound effect.
+In a real implementation, this would be a WAV file with a "splat" sound when the slime dies from spikes or hazards.
+The sound should communicate failure but not be too negative or jarring.

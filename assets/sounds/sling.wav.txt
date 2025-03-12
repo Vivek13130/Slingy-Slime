@@ -1,0 +1,3 @@
+This is a placeholder for the sling sound effect.
+In a real implementation, this would be a WAV file with a satisfying "whoosh" sound when the slime launches.
+The sound should increase in pitch/volume based on the force of the sling.

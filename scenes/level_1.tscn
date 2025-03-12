@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://kg1g31b7ofiy"]
+
+[ext_resource type="PackedScene" uid="uid://c6l7ypgjlc25n" path="res://scenes/simple_platform.tscn" id="1_bswci"]
+[ext_resource type="Script" uid="uid://diyavsuins4yp" path="res://scripts/level_1.gd" id="1_rus8k"]
+[ext_resource type="PackedScene" uid="uid://bccgco4cymtoj" path="res://scenes/player.tscn" id="2_rus8k"]
+
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1_rus8k")
+
+[node name="SimplePlatform" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(812, 636)
+
+[node name="SimplePlatform2" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(632, 636)
+
+[node name="SimplePlatform3" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(453, 636)
+
+[node name="SimplePlatform4" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(271, 610)
+rotation = 3.43547
+
+[node name="SimplePlatform6" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(108, 532)
+rotation = 3.8201
+
+[node name="SimplePlatform7" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(26, 405)
+rotation = 4.38049
+
+[node name="SimplePlatform8" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(4.00001, 234)
+rotation = 4.67835
+
+[node name="SimplePlatform9" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(14, 60)
+rotation = 5.06686
+
+[node name="SimplePlatform13" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(133, 20)
+rotation = 6.28986
+
+[node name="SimplePlatform14" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(294, 32)
+rotation = 6.28986
+
+[node name="SimplePlatform15" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(470, 38)
+rotation = 6.28986
+
+[node name="SimplePlatform16" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(634, 38)
+rotation = 6.28986
+
+[node name="SimplePlatform17" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(799, 41)
+rotation = 6.28986
+
+[node name="SimplePlatform18" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(976, 44)
+rotation = 6.28986
+
+[node name="SimplePlatform19" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(1032, 50)
+rotation = 6.28986
+
+[node name="SimplePlatform10" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(1097, 130)
+rotation = 4.67835
+
+[node name="SimplePlatform11" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(1094, 291)
+rotation = 4.67835
+
+[node name="SimplePlatform12" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(1079, 456)
+rotation = 5.08687
+
+[node name="SimplePlatform5" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(972, 584)
+rotation = 2.30222
+
+[node name="player" parent="." instance=ExtResource("2_rus8k")]
+position = Vector2(417, 393)

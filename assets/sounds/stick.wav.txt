@@ -1,0 +1,3 @@
+This is a placeholder for the stick sound effect.
+In a real implementation, this would be a WAV file with a satisfying "plop" sound when the slime sticks to a surface.
+The sound should have a wet, sticky quality with a slight echo for feedback.
