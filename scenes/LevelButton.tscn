@@ -1,0 +1,8 @@
+[gd_scene load_steps=0 format=3 uid="uid://b8a0a0yg88lnl"]
+
+[node name="LevelButton" type="Button"]
+custom_minimum_size = Vector2(70, 70)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "1"

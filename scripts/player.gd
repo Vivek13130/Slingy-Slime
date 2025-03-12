@@ -26,7 +26,7 @@ var max_sling_length : float = 200
 
 func _ready():
 	set_physics_process(true)
-	
+	starting_position = global_position
 	# Make sure sling line is not visible initially
 	sling_line.visible = false
 
@@ -109,11 +109,11 @@ func reset_player():
 	angular_velocity = 0
 	
 	# Reset state variables
-	is_stuck = true  # Start stuck to initial platform
+	is_stuck = false  # Start stuck to initial platform
 	can_sling = true
 	is_aiming = false
 	sling_count = 0
-	freeze = true
+	freeze = false
 	
 	# Reset visuals
 	sling_line.visible = false

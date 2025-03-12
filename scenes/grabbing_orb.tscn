@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://camhb1f2qi75q"]
+
+[ext_resource type="Texture2D" uid="uid://d1jobqwumi1sb" path="res://assets/images/goo_orb.svg" id="1_2ugkd"]
+[ext_resource type="Script" uid="uid://dh4j5w1cvg0cu" path="res://scripts/grabbing_orb.gd" id="1_drudh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drudh"]
+radius = 20.025
+
+[node name="GrabbingOrb" type="StaticBody2D"]
+script = ExtResource("1_drudh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_drudh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ugkd")
