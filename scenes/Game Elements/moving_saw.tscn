@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://b38p5iwe2dt22"]
+
+[ext_resource type="Script" uid="uid://bxsbjvb1ugoo4" path="res://scripts/moving_saw.gd" id="1_1rs88"]
+[ext_resource type="PackedScene" uid="uid://ctiqwow8uyb66" path="res://scenes/Game Elements/saw.tscn" id="1_um138"]
+
+[sub_resource type="Animation" id="Animation_1rs88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_um138"]
+resource_name = "moving_saw"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(-1.55, -1.55),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1rs88"]
+_data = {
+&"RESET": SubResource("Animation_1rs88"),
+&"move_saw": SubResource("Animation_um138")
+}
+
+[node name="moving_saw" type="Path2D"]
+script = ExtResource("1_1rs88")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../saw")
+
+[node name="saw" parent="." instance=ExtResource("1_um138")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1rs88")
+}

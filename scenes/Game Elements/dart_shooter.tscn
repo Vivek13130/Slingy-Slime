@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykatphqbtorh"]
+
+[ext_resource type="Texture2D" uid="uid://ds3rmmrnj6u7e" path="res://assets/images/crossbow.png" id="1_8k0yd"]
+[ext_resource type="Script" uid="uid://d0y3tbn4xmg5m" path="res://scripts/dart_shooter.gd" id="1_38qo2"]
+[ext_resource type="PackedScene" uid="uid://qjae1tbupdwe" path="res://scenes/Game Elements/dart.tscn" id="2_xqhhk"]
+
+[node name="DartShooter" type="Node2D"]
+script = ExtResource("1_38qo2")
+dart_scene = ExtResource("2_xqhhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8k0yd")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(161, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(162, 0)
+target_position = Vector2(10000, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

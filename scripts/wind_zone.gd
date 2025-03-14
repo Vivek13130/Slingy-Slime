@@ -1,7 +1,7 @@
 extends Area2D
 
 # Wind properties
-@export var force_strength: float = 1000.0
+@export var force_strength: float = 3000.0
 @export var direction: Vector2 = Vector2(0, -1)  # Default vertical wind
 
 # Visual properties
@@ -44,7 +44,8 @@ func _on_body_exited(body):
 	if body.is_in_group("player"):
 		pass  # Force will stop being applied naturally
 
-func _physics_process(delta):
+func _physics_process(delta): 
+	#---- maybe we need this if we have other elements as well that need to be deflected by it .
 	# Apply force to all bodies in the wind zone
 	for body in get_overlapping_bodies():
 		if body.is_in_group("player") and body is RigidBody2D:

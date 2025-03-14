@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Slingy Slime - new"
-run/main_scene="uid://kg1g31b7ofiy"
+run/main_scene="res://scenes/Levels/testing_level.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/Global.gd"
+LevelManager="*res://scripts/levelManager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 [input]
 

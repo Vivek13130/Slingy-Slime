@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://xocmvby1f0kw"]
+
+[ext_resource type="Script" uid="uid://0dyy6odjmy73" path="res://scripts/spike.gd" id="1_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://b3ab48xs25nsr" path="res://assets/images/spike.svg" id="1_ljd5v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a7y0"]
+radius = 14.0
+
+[node name="spike" type="Area2D" groups=["hazard"]]
+script = ExtResource("1_7a7y0")
+
+[node name="spike_area" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7a7y0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ljd5v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

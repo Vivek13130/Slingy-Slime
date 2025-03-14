@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctiqwow8uyb66"]
+
+[ext_resource type="Script" uid="uid://bn7s5tru7qjyo" path="res://scripts/saw.gd" id="1_wcjq8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajsau"]
+radius = 32.0624
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcjq8"]
+radius = 48.3735
+
+[node name="saw" type="AnimatableBody2D"]
+script = ExtResource("1_wcjq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ajsau")
+
+[node name="saw_shape" type="Node2D" parent="."]
+
+[node name="Polygon2D4" type="Polygon2D" parent="saw_shape"]
+offset = Vector2(-43, -2)
+polygon = PackedVector2Array(16, 2, 38, -47, 77, -51, 49, -31, 70, 2)
+
+[node name="Polygon2D5" type="Polygon2D" parent="saw_shape"]
+rotation = 1.54079
+offset = Vector2(-44.4873, -2.55107)
+polygon = PackedVector2Array(16, 2, 38, -47, 77.0333, -48.4956, 49, -31, 70, 2)
+
+[node name="Polygon2D6" type="Polygon2D" parent="saw_shape"]
+rotation = 3.16213
+offset = Vector2(-41.6783, -1.69478)
+polygon = PackedVector2Array(16, 2, 38, -47, 78.6232, -50.0747, 49, -31, 70, 2)
+
+[node name="Polygon2D7" type="Polygon2D" parent="saw_shape"]
+rotation = 4.70392
+offset = Vector2(-42.1056, -2.03049)
+polygon = PackedVector2Array(16, 2, 38, -47, 74.545, -49.6965, 49, -31, 70, 2)
+
+[node name="damageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea"]
+shape = SubResource("CircleShape2D_wcjq8")
+debug_color = Color(0.950869, 1.2514e-06, 0.566478, 0.42)
+
+[connection signal="body_entered" from="damageArea" to="." method="_on_damage_area_body_entered"]

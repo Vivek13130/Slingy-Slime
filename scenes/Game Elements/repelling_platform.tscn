@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvlh4kxmjftxp"]
+
+[ext_resource type="Texture2D" uid="uid://b5d7vguawlky0" path="res://assets/images/platform.svg" id="1_34774"]
+[ext_resource type="Script" uid="uid://m7auqy3rij6s" path="res://scripts/repelling_platform.gd" id="1_h8yfb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h8yfb"]
+bounce = 0.98
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34774"]
+size = Vector2(268, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8yfb"]
+size = Vector2(274, 52)
+
+[node name="Repelling_platform" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_h8yfb")
+script = ExtResource("1_h8yfb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_34774")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.134, 1)
+texture = ExtResource("1_34774")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_h8yfb")
+debug_color = Color(0, 0.64599, 0.247664, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://qjae1tbupdwe"]
+
+[ext_resource type="Script" uid="uid://djx7q41x1u7ga" path="res://scripts/dart.gd" id="1_kq2nk"]
+[ext_resource type="Texture2D" uid="uid://bnmngdmr36v0o" path="res://assets/images/sling_arrow.svg" id="1_lgu3x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lgu3x"]
+radius = 2.99985
+height = 29.9985
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kq2nk"]
+radius = 3.0
+
+[node name="Dart" type="RigidBody2D"]
+disable_mode = 1
+script = ExtResource("1_kq2nk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.330159, 0.650158)
+texture = ExtResource("1_lgu3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57461
+shape = SubResource("CapsuleShape2D_lgu3x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_kq2nk")
+debug_color = Color(0, 0.645275, 0.263606, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
